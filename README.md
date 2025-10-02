@@ -1,69 +1,81 @@
-# To-do-list-manager
-def add_task(tasks):
-    task = input("Enter a task to add").strip()
-    # it remove spaces to prevent adding empty task
-    if not task:
-    # it checks for empty space and send warning if found instead of crashing 
-        print("Can't add an empty task please add some")
-        return
-    tasks.append(task)
-    # it stores valid task
-    print(f' Added task: "{task}"')
+# 📝 To-Do List Manager (Python CLI)
 
-def view_tasks(tasks):
-    if not tasks:
-    # it send message if the task is empty 
-        print("No tasks added yet")
-        return
-    print("Enter your task")
-    for idx, task in enumerate(tasks, start=1):
-        print(f"{idx}.{task}")
-        # it display task numbered from 1
-        print()
-def remove_task(tasks):
-    if not tasks:
-    # it check if there is nothing to remove and send warning instead of crashing 
-        print("Nothing to remove")
-        return
-    view_tasks(tasks)
-    choice = input("Enter task to remove").strip()
-    # it enable user to select a task to remove
-    if not choice:
-        print("No input provided")
-        return
-    try:
-                num = int(choice)
-    except ValueError:
-        print("That is not a number, enter a valid number")
-        return
-            
-    if 1 <= num <= len(tasks):
-        removed = tasks.pop(num - 1)
-        print(f'Removed task: "{removed}" ')
-    else:
-        print(f"Task number out of range please chose a number between 1 and {len(tasks)}")
+A simple **command-line To-Do List Manager** built with Python. This program allows users to:
 
-def main():
-    tasks = []
-    menu = (
-                        "\n--- To Do List Manager --- \n"
-                        "1. Add task\n"
-                        "2. View tasks\n"
-                        "3. Quit\n"
-                    )
-while True:
-            print(menu)
-            choice = input("Choose (1-4):").strip()
-            if choice == "1":
-                add_task(tasks)
-            elif choice == "2":
-                view_tasks(tasks)
-            elif choice == "3":
-                remove_task(tasks)
-            elif choice == "4" or choice.lower() in ("q", "quit", "exit"):
-                print("Goodbye")
-                break
-            else:
-                print("Invalid choice.")
-    if __name__ == "__main__":
-        main()            
+* Add tasks
+* View tasks
+* Remove tasks
+* Exit the application
+
+Perfect for beginners learning Python functions, lists, and basic input handling.
+
+---
+
+## 🚀 Features
+
+* Add new tasks (prevents empty input).
+* View all tasks in a numbered list.
+* Remove tasks by selecting their number.
+* User-friendly menu interface.
+* Graceful handling of invalid inputs.
+
+---
+
+## 📂 Project Structure
+
+```
+todo.py    # Main script containing the functions and CLI
+```
+
+---
+
+## ▶️ How to Run
+
+1. Clone or download this script.
+2. Make sure you have **Python 3** installed.
+3. Run the script in your terminal:
+
+   ```bash
+   python todo.py
+   ```
+4. Follow the on-screen menu.
+
+---
+
+## 📖 Usage Example
+
+```
+--- To Do List Manager ---
+1. Add task
+2. View tasks
+3. Remove task
+4. Quit
+
+Choose (1-4): 1
+Enter a task to add: Buy groceries
+Added task: "Buy groceries"
+
+Choose (1-4): 2
+Your tasks:
+1. Buy groceries
+
+Choose (1-4): 3
+Your tasks:
+1. Buy groceries
+Enter the task number to remove: 1
+Removed task: "Buy groceries"
+
+Choose (1-4): 4
+Goodbye!
+```
+
+---
+
+## 💡 Future Improvements
+
+* Save tasks to a file (so they persist after quitting).
+* Edit existing tasks.
+* Add task deadlines or priorities.
+
+---
+
